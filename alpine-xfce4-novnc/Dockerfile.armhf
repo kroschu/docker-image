@@ -1,6 +1,15 @@
-FROM arm32v6/alpine
+FROM resin/raspberrypi3-alpine
 
-COPY config /etc/skel/.config
+MAINTAINER Volodymyr Kovalenko
+
+
+RUN apk add --update-cache tcl tcl-tls expect && \
+    /scripts/wsget.tcl https://github.com/tcltk/tcllib/archive/tcllib_1_18.tar.gz /tmp/ && \
+    tar -zx -C /tmp -f /tmp/tcllib_1_18.tar.gz && \
+    tclsh /tmp/tcllib-tcllib_1_18/installer.tcl -no-html -no-nroff -no-examples -no-gui -no-apps -no-wait -pkg-path /usr/lib/tcllib1.18 && \
+    rm -rf /var/cache/apk/* && \
+    rm -rf /tmp/tcllib*
+
 
 RUN set -xe \
   && echo "@testing http://dl-cdn.alpinelinux.org/alpine/edge/testing"  >> /etc/apk/repositories \
