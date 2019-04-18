@@ -1,4 +1,5 @@
-FROM pipill/armhf-alpine:edge
+
+ FROM pipill/armhf-alpine:edge
 
 ENV LEANOTE_VERSION=2.4
 

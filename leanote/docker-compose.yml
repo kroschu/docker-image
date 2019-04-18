@@ -2,12 +2,12 @@ version: '2'
 services:
   leanote:
     container_name: leanote_app
-    image: yangxuan8282/armhf-leanote
+    image: kroschu/rpi-alpine-leanote
     ports:
-      - "9000:9000"
+      - "9003:9000"
     volumes:
       - ./app.conf:/leanote/conf/app.conf
-      - ./upload:/leanote/public/upload
+      - /home/asterisk/kk/data/User/admin/home/document/alpine/upload:/leanote/public/upload
       - /etc/localtime:/etc/localtime:ro
     links:
       - mongo
