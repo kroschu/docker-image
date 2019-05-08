@@ -1,4 +1,4 @@
-FROM arm64v8/debian
+FROM arm64v8/debian:stretch
 MAINTAINER Yangxuan <yangxuan8282@gmail.com>
 
 COPY run_novnc /usr/bin/
