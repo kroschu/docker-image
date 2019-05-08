@@ -1,4 +1,4 @@
-FROM arm64v8/debian:stretch
+FROM arm64v8/debian:jessie
 MAINTAINER Yangxuan <yangxuan8282@gmail.com>
 
 COPY run_novnc /usr/bin/
@@ -6,6 +6,7 @@ COPY keyboard /etc/default/keyboard
 
 ENV DEBIAN_FRONTEND=noninteractive
 
+RUN printf "deb http://archive.debian.org/debian/ jessie main\ndeb-src http://archive.debian.org/debian/ jessie main\ndeb http://security.debian.org jessie/updates main\ndeb-src http://security.debian.org jessie/updates main" > /etc/apt/sources.list
 RUN set -xe \
   && apt-get update && apt-get install -y dirmngr \
   && echo "deb http://archive.raspberrypi.org/debian/ stretch main ui" | tee /etc/apt/sources.list.d/raspi.list \
