@@ -1,4 +1,4 @@
-FROM debian
+FROM arm64v8/debian
 MAINTAINER Yangxuan <yangxuan8282@gmail.com>
 
 COPY run_novnc /usr/bin/
@@ -21,12 +21,12 @@ RUN set -xe \
 
 USER pi
 
-ENV USER=pi \
+ENV USER=vokov \
     DISPLAY=:1 \
     HOME=/home/pi \
     TERM=xterm \
     SHELL=/bin/bash \
-    VNC_PASSWD=raspberry \
+    VNC_PASSWD=805235io \
     VNC_PORT=5901 \
     VNC_RESOLUTION=1024x768 \
     VNC_COL_DEPTH=24 \
